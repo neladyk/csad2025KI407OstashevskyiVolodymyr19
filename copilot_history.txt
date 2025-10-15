@@ -1,1 +1,34 @@
-# this is promt to copilot "Generate content for this file."
+Promt to Copilot:
+"Create a simple C++ program that prints "Hello, World!" to the console"
+
+Answer Copilot:
+"#include <iostream>
+
+int main() {
+    std::cout << "Hello, World!" << std::endl;
+    return 0;
+}
+"
+
+Promt to Copilot :
+"Generate content for this file"
+
+Answer Copilot:
+"
+cmake_minimum_required(VERSION 3.16)
+project(csad2025KI407OstashevskyiVolodymyr19 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Add source files here
+# Example:
+# add_executable(${PROJECT_NAME} main.cpp)
+
+# Enable warnings
+if(MSVC)
+    add_compile_options(/W4)
+else()
+    add_compile_options(-Wall -Wextra -pedantic)
+endif()
+"
