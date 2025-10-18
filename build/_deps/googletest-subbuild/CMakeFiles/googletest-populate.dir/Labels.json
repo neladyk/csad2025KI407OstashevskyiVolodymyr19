@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/User/GitHub/csad2025KI407OstashevskyiVolodymyr19/build/_deps/googletest-subbuild/CMakeFiles/googletest-populate"
+		},
+		{
+			"file" : "C:/Users/User/GitHub/csad2025KI407OstashevskyiVolodymyr19/build/_deps/googletest-subbuild/CMakeFiles/05129cbe231f2321edcf9c2f8e67aebf/googletest-populate.rule"
+		},
+		{
+			"file" : "C:/Users/User/GitHub/csad2025KI407OstashevskyiVolodymyr19/build/_deps/googletest-subbuild/CMakeFiles/7811bb2e8b23f1f473a69895c0f29f50/googletest-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Users/User/GitHub/csad2025KI407OstashevskyiVolodymyr19/build/_deps/googletest-subbuild/CMakeFiles/3cd347bc459c953edb9bdd0e35e8f235/googletest-populate-build.rule"
+		},
+		{
+			"file" : "C:/Users/User/GitHub/csad2025KI407OstashevskyiVolodymyr19/build/_deps/googletest-subbuild/CMakeFiles/3cd347bc459c953edb9bdd0e35e8f235/googletest-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Users/User/GitHub/csad2025KI407OstashevskyiVolodymyr19/build/_deps/googletest-subbuild/CMakeFiles/3cd347bc459c953edb9bdd0e35e8f235/googletest-populate-download.rule"
+		},
+		{
+			"file" : "C:/Users/User/GitHub/csad2025KI407OstashevskyiVolodymyr19/build/_deps/googletest-subbuild/CMakeFiles/3cd347bc459c953edb9bdd0e35e8f235/googletest-populate-install.rule"
+		},
+		{
+			"file" : "C:/Users/User/GitHub/csad2025KI407OstashevskyiVolodymyr19/build/_deps/googletest-subbuild/CMakeFiles/3cd347bc459c953edb9bdd0e35e8f235/googletest-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Users/User/GitHub/csad2025KI407OstashevskyiVolodymyr19/build/_deps/googletest-subbuild/CMakeFiles/3cd347bc459c953edb9bdd0e35e8f235/googletest-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Users/User/GitHub/csad2025KI407OstashevskyiVolodymyr19/build/_deps/googletest-subbuild/CMakeFiles/3cd347bc459c953edb9bdd0e35e8f235/googletest-populate-test.rule"
+		},
+		{
+			"file" : "C:/Users/User/GitHub/csad2025KI407OstashevskyiVolodymyr19/build/_deps/googletest-subbuild/CMakeFiles/3cd347bc459c953edb9bdd0e35e8f235/googletest-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"googletest-populate"
+		],
+		"name" : "googletest-populate"
+	}
+}
