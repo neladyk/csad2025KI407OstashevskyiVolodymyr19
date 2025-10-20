@@ -1,0 +1,10 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/User/GitHub/csad2025KI407OstashevskyiVolodymyr19/build/cmake_install.cmake",
+		"C:/Users/User/GitHub/csad2025KI407OstashevskyiVolodymyr19/build/_deps/googletest-build/cmake_install.cmake",
+		"C:/Users/User/GitHub/csad2025KI407OstashevskyiVolodymyr19/build/_deps/googletest-build/googlemock/cmake_install.cmake",
+		"C:/Users/User/GitHub/csad2025KI407OstashevskyiVolodymyr19/build/_deps/googletest-build/googletest/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

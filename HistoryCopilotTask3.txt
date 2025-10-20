@@ -1,3 +1,93 @@
+Promt to Copilot for file math_operations.h:
+"
+/// @brief Simple math operations header
+/// Create a function int add(int a, int b);
+"
+
+Answer Copilot :
+"
+#ifndef MATH_OPERATIONS_H
+#define MATH_OPERATIONS_H
+
+/// @brief Simple math operations header
+/// Create a function int add(int a, int b);
+ int add(int a, int b);
+ #endif // MATH_OPERATIONS_H
+"
+
+Promt to Copilot for file math_operations.cpp:
+"
+add include file with name "math_operations.h"
+/// @brief Implement function add that returns sum of two integers
+"
+
+Answer Copilot:
+"
+#include "math_operations.h"
+
+/// @brief Implement function add that returns sum of two integers
+int add(int a, int b) {
+    return a + b;
+}
+"
+
+Promt to Copilot for file unit_tests.cpp:
+"
+// Write Google Test unit tests for the function add(int a, int b) from math_operations.h
+// The tests should include three cases:
+// 1. Adding two positive numbers returns their sum
+// 2. Adding two negative numbers returns their sum
+// 3. Adding a negative and a positive number returns the correct result
+"
+
+Answer Copilot:
+"
+#include <gtest/gtest.h>
+#include "../math_operations.h"
+
+TEST(AdditionTest, AddsTwoPositiveNumbers) {
+    EXPECT_EQ(add(2, 3), 5);
+    EXPECT_EQ(add(10, 20), 30);
+}
+
+TEST(AdditionTest, AddsTwoNegativeNumbers) {
+    EXPECT_EQ(add(-2, -3), -5);
+    EXPECT_EQ(add(-10, -20), -30);
+}
+
+TEST(AdditionTest, AddsNegativeAndPositiveNumber) {
+    EXPECT_EQ(add(-5, 3), -2);
+    EXPECT_EQ(add(7, -4), 3);
+}
+
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
+"
+
+Promt to Copilot for file CMakeLists.txt:
+"
+# Copilot, created a complete CMakeLists.txt for a C++ project with the following requirements:
+# - Project name: csad2025KI407OstashevskyiVolodymyr19
+# - Minimum CMake version: 3.16
+# - Language: C++
+# - Standard used C++17
+# - Make the build create an executable from main.cpp
+# - Add support for unit tests from Google Test:
+# - Test files are in the tests/ folder
+# - One of the test files is tests/math_operations_test.cpp
+# - The main code is in the root (e.g. main.cpp and math_operations.h)
+# - Provide compiler warnings:
+# - For MSVC: /W4
+# - For other compilers: -Wall -Wextra -pedantic
+# - If Google Test is not found on the system, automatically download it from GitHub via FetchContent
+# - Create separate `run_tests` target to run tests via `ctest`
+# - Add comments to each main section for understanding
+"
+
+Answer Copilot:
+"
 # Minimum CMake version and project declaration
 cmake_minimum_required(VERSION 3.16)
 project(csad2025KI407OstashevskyiVolodymyr19 LANGUAGES CXX)
@@ -120,3 +210,28 @@ install(TARGETS ${PROJECT_NAME}_exe RUNTIME DESTINATION bin)
 if(TARGET ${PROJECT_NAME}_lib)
     install(TARGETS ${PROJECT_NAME}_lib ARCHIVE DESTINATION lib)
 endif()
+"
+
+Promt to Copilot for file main.cpp:
+"
+// Create a main.cpp file that demonstrates the math_operations module
+// The program should:
+// 1. Print "Hello World" to the console
+// 2. Call the function add(2, 3) from math_operations.h and print the result
+// Include all necessary headers
+// Use standard C++ main function
+"
+
+Answer Copilot:
+"
+#include <iostream>
+
+#include "math_operations.h"
+
+int main() {
+    std::cout << "Hello World" << std::endl;
+    int result = add(2, 3);
+    std::cout << "add(2, 3) = " << result << std::endl;
+    return 0;
+}
+"

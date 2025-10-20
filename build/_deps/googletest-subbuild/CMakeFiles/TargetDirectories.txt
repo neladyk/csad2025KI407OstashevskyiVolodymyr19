@@ -1,0 +1,3 @@
+C:/Users/User/GitHub/csad2025KI407OstashevskyiVolodymyr19/build/_deps/googletest-subbuild/CMakeFiles/googletest-populate.dir
+C:/Users/User/GitHub/csad2025KI407OstashevskyiVolodymyr19/build/_deps/googletest-subbuild/CMakeFiles/ALL_BUILD.dir
+C:/Users/User/GitHub/csad2025KI407OstashevskyiVolodymyr19/build/_deps/googletest-subbuild/CMakeFiles/ZERO_CHECK.dir
