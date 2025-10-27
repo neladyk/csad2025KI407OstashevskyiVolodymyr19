@@ -1,0 +1,125 @@
+Promt to Copilot for file with name "ci.yml":
+"
+# GitHub Copilot Prompt:
+# Generate a complete GitHub Actions Workflow in YAML format for cross-platform Continuous Integration (CI).
+#
+# Workflow Requirements:
+# 1. Name: CI Cross Build and Test
+# 2. Trigger: The action must run on 'push' or 'pull_request' events targeting any branch name that contains '**develop**' or the branch named 'main'. NOTE: The primary branch is 'main'.
+# 3. Job: Create a single job named 'cross_build'.
+# 4. Strategy: Use a matrix strategy to run the build on three different operating systems:
+#    - ubuntu-latest (Linux)
+#    - windows-latest (Windows)
+#    - macos-latest (macOS)
+# 5. Steps (for each OS in the matrix):
+#    - Step 1: Checkout the code using 'actions/checkout@v4'.
+#    - Step 2: Install Build Dependencies. ONLY for 'ubuntu-latest', install 'cmake' and 'build-essential' using 'sudo apt-get install'. Do NOT use dedicated setup actions for CMake.
+#    - Step 3: Run the Build and Test Script. Execute the local shell script 'ci.sh' (from Stage 4) which handles CMake configuration, building, and CTest execution. Ensure cross-platform execution by setting the shell to 'bash' for this step. The script must be made executable ('chmod +x').
+#    - Step 4: Include a mandatory "Deploy" placeholder step with an 'echo' command.
+
+name:
+"
+
+Amswer Copilot:
+"
+name: CI Cross Build and Test
+
+on:
+  push:
+    branches:
+      - '**develop**'
+      - main
+  pull_request:
+    branches:
+      - '**develop**'
+      - main
+
+jobs:
+  cross_build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Build Dependencies
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake build-essential
+
+      - name: Run Build and Test Script
+        run: |
+          chmod +x ci.sh
+          bash ci.sh
+
+      - name: Deploy
+        run: echo "Deploy step placeholder"
+"
+
+Promt to Copilot for file with name "ci.sh":
+"
+# GitHub Copilot Prompt:
+# Generate a complete Bash shell script (ci.sh) for Continuous Integration.
+# The script must perform configuration, building, and unit testing of a C++ project using CMake and CTest.
+#
+# Logic Requirements:
+# 1. Use 'set -e' to immediately exit on any command failure.
+# 2. Match the logic and robust error handling of the provided Windows batch file (ci.bat).
+# 3. Clean up: Delete the existing 'build' directory robustly (rm -rf build).
+# 4. Build: Create and enter the 'build' directory.
+# 5. Configuration: Run 'cmake ..'.
+# 6. Build: Run 'cmake --build . --config Debug'. Use the '--config Debug' option explicitly, as this is necessary for multi-configuration generators (like Visual Studio or Xcode) and ensures consistency.
+# 7. Testing: Run 'ctest -C Debug --output-on-failure'. Ensure tests are run using the Debug configuration.
+# 8. Success/Failure: Print clear success/failure messages upon completion.
+
+#!/bin/bash
+"
+
+Answer Copilot:
+"
+#!/bin/bash
+set -euo pipefail
+
+# CI script: configure, build, and test a C++ project with CMake/CTest.
+# Exits immediately on error (set -e). Provides clear success/failure messages.
+
+CI_STATUS=0
+
+error_handler() {
+    rc=$?
+    cmd="${BASH_COMMAND:-unknown}"
+    echo "ERROR: Command '${cmd}' failed with exit code ${rc} at line ${1:-?}" >&2
+    CI_STATUS=$rc
+}
+trap 'error_handler ${LINENO}' ERR
+
+finish() {
+    if [ "${CI_STATUS}" -eq 0 ]; then
+        echo "CI SUCCESS: Configuration, build, and tests completed successfully."
+    else
+        echo "CI FAILURE: See details above." >&2
+        exit "${CI_STATUS}"
+    fi
+}
+trap finish EXIT
+
+echo "CI: Removing existing 'build' directory..."
+rm -rf build
+
+echo "CI: Creating and entering 'build' directory..."
+mkdir -p build
+cd build
+
+echo "CI: Running CMake configuration (cmake ..)..."
+cmake ..
+
+echo "CI: Building project (cmake --build . --config Debug)..."
+cmake --build . --config Debug
+
+echo "CI: Running tests (ctest -C Debug --output-on-failure)..."
+ctest -C Debug --output-on-failure
+"
