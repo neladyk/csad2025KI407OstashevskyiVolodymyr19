@@ -1,0 +1,61 @@
+Promt to Copilot for file with name "ci.yml":
+"
+# GitHub Copilot Prompt:
+# Generate a complete GitHub Actions Workflow in YAML format for cross-platform Continuous Integration (CI).
+#
+# Workflow Requirements:
+# 1. Name: CI Cross Build and Test
+# 2. Trigger: The action must run on 'push' or 'pull_request' events targeting any branch name that contains '**develop**' or the branch named 'main'. NOTE: The primary branch is 'main'.
+# 3. Job: Create a single job named 'cross_build'.
+# 4. Strategy: Use a matrix strategy to run the build on three different operating systems:
+#    - ubuntu-latest (Linux)
+#    - windows-latest (Windows)
+#    - macos-latest (macOS)
+# 5. Steps (for each OS in the matrix):
+#    - Step 1: Checkout the code using 'actions/checkout@v4'.
+#    - Step 2: Install Build Dependencies. ONLY for 'ubuntu-latest', install 'cmake' and 'build-essential' using 'sudo apt-get install'. Do NOT use dedicated setup actions for CMake.
+#    - Step 3: Run the Build and Test Script. Execute the local shell script 'ci.sh' (from Stage 4) which handles CMake configuration, building, and CTest execution. Ensure cross-platform execution by setting the shell to 'bash' for this step. The script must be made executable ('chmod +x').
+#    - Step 4: Include a mandatory "Deploy" placeholder step with an 'echo' command.
+
+name:
+"
+
+Amswer Copilot:
+"
+name: CI Cross Build and Test
+
+on:
+  push:
+    branches:
+      - '**develop**'
+      - main
+  pull_request:
+    branches:
+      - '**develop**'
+      - main
+
+jobs:
+  cross_build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Build Dependencies
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake build-essential
+
+      - name: Run Build and Test Script
+        run: |
+          chmod +x ci.sh
+          bash ci.sh
+
+      - name: Deploy
+        run: echo "Deploy step placeholder"
+"
